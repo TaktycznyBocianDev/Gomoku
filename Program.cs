@@ -1,23 +1,30 @@
 ﻿using Raylib_cs;
 
-namespace HelloWorld;
-
-class Program
+namespace Gomoku
 {
-    public static void Main()
+    public static class Program
     {
-        Raylib.InitWindow(800, 480, "Hello World");
-
-        while (!Raylib.WindowShouldClose())
+        public static void Main()
         {
-            Raylib.BeginDrawing();
-            Raylib.ClearBackground(Color.White);
+            int WindowSize = 800;
+            int boardSize = 15;
 
-            Raylib.DrawText("Hello, world!", 12, 12, 20, Color.Black);
 
-            Raylib.EndDrawing();
+            Raylib.InitWindow(WindowSize + boardSize*2, WindowSize + boardSize*2, "Hello World");
+            Board board = new Board(boardSize, boardSize*7);
+
+            while (!Raylib.WindowShouldClose())
+            {
+                Raylib.BeginDrawing();
+                Raylib.ClearBackground(Color.Gray);
+
+                board.DrawGrid();
+
+                Raylib.EndDrawing();
+            }
+
+            Raylib.CloseWindow();
         }
-
-        Raylib.CloseWindow();
     }
 }
+
