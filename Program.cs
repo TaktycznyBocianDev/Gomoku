@@ -1,4 +1,5 @@
 ﻿using Raylib_cs;
+using System.Runtime.CompilerServices;
 
 namespace Gomoku
 {
@@ -6,17 +7,26 @@ namespace Gomoku
     {
         public static void Main()
         {
-            int WindowSize = 800;
-            int boardSize = 15;
+            int windowSize = 800;
+            int gridSize = 15;
+            int cellSize = windowSize / gridSize;
 
 
-            Raylib.InitWindow(WindowSize + boardSize*2, WindowSize + boardSize*2, "Hello World");
-            Board board = new Board(boardSize, boardSize*7);
+            Raylib.InitWindow(windowSize + cellSize, windowSize + cellSize, "Hello World");
+            Board board = new Board(gridSize, cellSize);
 
             while (!Raylib.WindowShouldClose())
             {
                 Raylib.BeginDrawing();
                 Raylib.ClearBackground(Color.Gray);
+
+                //if (Raylib.IsMouseButtonDown(MouseButton.Left))
+                //{
+                //    int pointX = Raylib.GetMouseX() * boardSize * 7 / 2 + boardSize * 7 / 2;
+                //    int pointY = Raylib.GetMouseY() * boardSize * 7 / 2 + boardSize * 7 / 2;
+
+                //    board.PlaceRock(pointX, pointY);
+                //}
 
                 board.DrawGrid();
 

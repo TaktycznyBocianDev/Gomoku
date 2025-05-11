@@ -50,8 +50,8 @@ namespace Gomoku
             {
                 for (int j = 0; j < Grid.GetLength(1); j++)
                 {
-                    int pointX = i * cellSize / 2 + cellSize / 2;
-                    int pointY = j * cellSize / 2 + cellSize / 2;
+                    int pointX = i * cellSize + cellSize;
+                    int pointY = j * cellSize + cellSize;
 
                     switch (Grid[i,j])
                     {
@@ -73,6 +73,26 @@ namespace Gomoku
             }
         }
 
+        public void PlaceRock(int x, int y)
+        {
+            if(Grid[x,y] == State.Blank)
+            {
+                return;
+            }
+
+            if (Player)
+            {
+                Grid[x, y] = State.White;
+                Player = false;
+            }
+            else
+            {
+                Grid[x, y] = State.White;
+                Player = true;
+            }
+
+
+        }
 
 
     }
